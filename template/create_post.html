@@ -1,0 +1,99 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% for message in get_flashed_messages()%}
+
+    <div class = 'alert alert-warning alert-dismissible fade show' role="'alert" >
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+
+
+<style> 
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: grey;
+      }
+      
+      
+</style>
+
+
+<ul>
+
+    
+      
+  <li><a href="{{url_for('logout')}}">Logout</a></li>
+  <li><a href="{{url_for('profile')}}">Profile</a></li>
+  <li><a href="{{url_for('entry')}}"> Feed </a></li>
+  <li><a href="{{url_for('file')}}"> File </a></li>
+  
+  
+    {{ form.hidden_tag() }}
+    
+</div>
+</ul>
+
+
+
+<h1> Add blog post : </h1>
+    <br/>
+<div class="shadow p-3 mb-5 bg-body rounded">
+    <form method="POST", action="" >
+
+        {{ form.hidden_tag() }}
+
+        {{ form.title.label( class ="form-label") }}
+
+        {{ form.title(class="form-control") }}
+
+        {{ form.author.label( class ="form-label") }}
+
+        {{ form.author(class="form-control") }}
+
+        {{ form.text.label( class ="form-label") }}
+
+        {{ form.text(class="form-control", rows = '10') }}
+
+        {{ form.tag.label( class ="form-label") }}
+
+        {{ form.tag(class="form-control") }}
+
+       
+
+
+
+        
+
+        
+
+        {{ form.submit }}
+
+        
+    
+    </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,248 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+
+<h1 align="center"> Make a post </h1>
+<form method="'POST">
+
+
+    <style> 
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+          }
+          
+          li {
+            float: left;
+          }
+          
+          li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
+          
+          /* Change the link color to #111 (black) on hover */
+          li a:hover {
+            background-color: grey;
+          }
+    </style> 
+    <ul>
+
+        <li><a href="{{url_for('logout')}}">Logout</a></li>
+        <li><a href="{{url_for('profile')}}">Profile</a></li>
+        <li><a href="{{url_for('entry')}}">Home </a></li>
+        
+
+    </ul>
+    
+</body> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <textarea name = 'text' id ='text' class="form-control"> </textarea>
+    <br />
+    <div align="'center">
+        <button type = "submit" class=" btn btn-lg btn-primary">Post </button> 
+
+    </div>
+
+
+</form>
+
+</body>
+</html>
+
+
+
+<div class="topnav">
+    <form method="POST" action="{{url_for('search')}}" class="d-flex">
+        {{ form.hidden_tag() }}
+
+        <li><input type = "text" placeholder = "Search"></li>
+      <button type="search">Submit</button>
+    </form>
+</div>
+
+
+.topnav button[type=submit] {
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 190px;
+    font-size: 17px;
+    
+  }
+
+
+
+  {{ post.author}}<br/>
+    {{ post.title}}<br/>
+    {{ post.text }}<br/>
+    {{ post.date }}<br/>
+
+
+    {% extends 'base.html' %} 
+{% block content %} 
+{% for message in get_flashed_messages()%}
+
+    <div class = 'alert alert-warning alert-dismissible fade show' role="'alert" >
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+
+
+
+<h1> Add blog post : </h1>
+    <br/>
+<div class="shadow p-3 mb-5 bg-body rounded">
+    <form method="POST", action="" >
+
+        {{ form.hidden_tag() }}
+
+        {{ form.title.label( class ="form-label") }}
+
+        {{ form.title(class="form-control") }}
+
+        {{ form.author.label( class ="form-label") }}
+
+        {{ form.author(class="form-control") }}
+
+        {{ form.text.label( class ="form-label") }}
+
+        {{ form.text(class="form-control", rows = '10') }}
+
+        {{ form.tag.label( class ="form-label") }}
+
+        {{ form.tag(class="form-control") }}
+
+       
+
+
+
+        
+
+        
+
+        {{ form.submit }}
+
+        
+    
+    </form>
+</div>
+{% endblock %}
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+
+<br/>
+
+<div class="shadow p-3 mb-5 bg-body rounded">
+	<h2>{{ post.title }}</h2>
+	<small>By: {{ post.poster.name }}<br/>
+	{{ post.date_posted }}</small> <br/><br/>
+
+	{{ post.text|safe }}<br/><br/>
+
+	
+<div class="card mb-3">
+	<div class="row no-gutters">
+	
+		<div class="col-md-10">
+			<div class="card-body">
+				<h5 class="card-title">
+					{{ post.poster.name }}			
+				</h5>
+				<p class="card-text">
+					{% if post.poster.about_author %}
+						{{ post.poster.about_author }}
+					{% else %}
+						Author has no about profile yet...
+					{% endif %}
+
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+
+<a href="{{ url_for('entry')}}" class="btn btn-outline-secondary btn-sm">Back To Blog</a>
+
+
+
+
+
+{% endblock %}
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+
+<br/>
+{% for post in posts %}
+<div class="shadow p-3 mb-5 bg-body rounded">
+	<h2><a href="{{ url_for('post', id=post.id)}}">{{ post.title }}</a></h2>
+	<small>By: {{ post.poster.name }}<br/>
+	{{ post.date }}</small> <br/><br/>
+
+	{{ post.text|safe }}
+	<br/><br/>
+	<a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">View Post</a>
+	
+	
+
+	<br/><br/>
+</div>
+<br/>
+{% endfor %}
+
+
+
+
+
+{% endblock %}

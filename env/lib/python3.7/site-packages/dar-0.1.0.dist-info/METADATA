@@ -1,0 +1,75 @@
+Metadata-Version: 2.1
+Name: dar
+Version: 0.1.0
+Summary: Dar is a command line toolbelt for managing different project workflows.
+Home-page: https://github.com/alanbato/dar
+Author: Alan Velasco
+Author-email: alanvelasco.a@gmail.com
+License: MIT license
+Keywords: dar
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: Click (>=6.0)
+
+===
+Dar
+===
+
+
+.. image:: https://img.shields.io/pypi/v/dar.svg
+        :target: https://pypi.python.org/pypi/dar
+
+.. image:: https://img.shields.io/travis/alanbato/dar.svg
+        :target: https://travis-ci.org/alanbato/dar
+
+.. image:: https://readthedocs.org/projects/dar/badge/?version=latest
+        :target: https://dar.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+
+.. image:: https://pyup.io/repos/github/alanbato/dar/shield.svg
+     :target: https://pyup.io/repos/github/alanbato/dar/
+     :alt: Updates
+
+
+
+Dar is a command line toolbelt for managing different project workflows.
+
+
+* Free software: MIT license
+* Documentation: https://dar.readthedocs.io.
+
+
+Features
+--------
+
+* TODO
+
+Credits
+-------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+=======
+History
+=======
+
+0.1.0 (2018-04-03)
+------------------
+
+* First release on PyPI.
+
+

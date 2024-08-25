@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<br/>
+	<h2>You Searched these tags : <em>{{ searched }}</em></h2>
+	
+	<br/>
+
+	
+	{% if posts %}
+
+	{% for post in posts %}
+		<div class="shadow p-3 mb-5 bg-body rounded">
+	<h2><a href="{{ url_for('post', id=post.id)}}">{{ post.title }}</a></h2>
+	<small>By: {{ post.poster.name }}<br/>
+    {{ post.tag}}
+	{{ post.date_posted }}</small> <br/><br/>
+
+	{{ post.content|safe }}
+	<br/><br/>
+	<a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">View Post</a>
+    
+    {% if post.id == current_user.id %}
+	<a href="{{ url_for('post', id=post.id)}}">{{ post.title }}</a>
+
+	{% endif %}
+	<br/><br/>
+</div>
+<br/>
+	{% endfor %}
+    
+
+	{% else %}
+	Sorry the tag(s) <strong>{{ searched }}</strong> was/were not found...
+	{% endif %}
+    {% endblock %}

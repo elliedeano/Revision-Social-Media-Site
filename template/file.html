@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style> 
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+          }
+          
+          li {
+            float: left;
+          }
+          
+          li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
+          
+          /* Change the link color to #111 (black) on hover */
+          li a:hover {
+            background-color: grey;
+          }
+    </style> 
+    <ul>
+
+        <li><a href="{{url_for('logout')}}">Logout</a></li>
+        <li><a href="{{url_for('entry')}}">Home</a></li>
+        <li><a href="{{url_for('create_post')}}">New Post </a></li>
+        
+
+    </ul>
+    
+</body> 
+
+
+
+
+
+    <title>file upload page  page </title>
+    <h1> file  page </h1>
+</head>
+<body>
+    
+</body>
+</html>

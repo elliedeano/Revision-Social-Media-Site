@@ -1,0 +1,124 @@
+
+<!DOCTYPE html> 
+
+
+
+
+<html lang="en">
+  
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hey</title>
+</head>
+ 
+
+<body>
+
+  {% extends 'base.html' %}
+  {% block content %}
+  <style> 
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: grey;
+      }
+      
+      
+</style>
+
+
+<ul>
+
+    
+      
+      <li><a href="{{url_for('logout')}}">Logout</a></li>
+      <li><a href="{{url_for('profile')}}">Profile</a></li>
+      <li><a href="{{url_for('create_post')}}">New Post </a></li>
+      <li><a href="{{url_for('file')}}">file </a></li>
+      
+      
+      <form method="POST" action="{{ url_for('tagged_posts')}}" class="d-flex">
+        {{ form.hidden_tag() }}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      
+</div>
+</ul>
+
+
+
+
+  {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+      {{ message }}
+      <button type="button" class = 'btn-close' data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endfor %}
+  <h1> Feed </h1>
+
+  {% for post in posts %}
+  
+  <div class="shadow p-3 mb-5 bg-body rounded">
+    <h2><a href="{{ url_for('post', id=post.id)}}">{{ post.title }}</a></h2>
+    
+    {{ post.text|safe }}
+    <br/><br/>
+    <small>By: {{ post.poster.name }}<br/>
+
+      {{ post.date }}</small> <br/><br/>
+      <small> Tags: {{ post.tag }}</small>
+      <br/><br/>
+      <a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">View Post</a>
+	
+	
+
+	<br/><br/>
+</div>
+
+    <hr><br/>
+
+    
+
+
+  {% endfor %}
+  {% endblock %}
+  
+  
+  
+    <h1>Hello you are logged in.</h1>
+
+
+
+
+
+    
+    
+</body> 
+
+</html> 
+
+
+
